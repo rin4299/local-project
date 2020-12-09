@@ -82,7 +82,7 @@ include "../controller/questionlist.php";
         </div>
         <div class="col-7">
           <h1 class="mt-5">Exam Maker Question List</h1>
-          <h2 id="test2"> a</h2>
+          <!-- <h2 id="test2"> a</h2> -->
 
           <?php
           $url = 'http://' . $_SERVER['SERVER_NAME'] . '/TestMaker/add-question';
@@ -125,7 +125,7 @@ include "../controller/questionlist.php";
                       <input class="btn btn-danger" type="button" value="Delete">
                       <!-- <input class="btn btn-success" type="button" value="Add"> -->
                       <button class="btn btn-success" type="submit" id="Add" onclick="addFunc('<?php echo $question[9]; ?>')">Add</button>
-                      <input class="btn btn-warning" type="button" value="Remove">
+                      <button class="btn btn-warning" type="submit" id="Remove" onclick="removeFunc('<?php echo $question[9]; ?>')">Remove</button>
                     </form>
                   </td>
                   </tr>
@@ -238,13 +238,28 @@ include "../controller/questionlist.php";
     function addFunc(str){
       var xhttp;
       xhttp = new XMLHttpRequest();
-      document.getElementById("test2").innerHTML = str;
+      // document.getElementById("test2").innerHTML = str;
       // xhttp.onreadystatechange = function() {
       // if (this.readyState == 4 && this.status == 200) {
-        // document.getElementById("test2").innerHTML = 'str';
+      //   document.getElementById("test2").innerHTML = this.responsiveText;
       // }
       // };
-      xhttp.open("GET", "../ajax/add_ques_test.php?q=" + str, true);
+      xhttp.open("GET", "../controller/add_ques_test.php?q=" + str, true);
+      xhttp.send(); 
+    }
+  </script>
+
+  <script>
+    function removeFunc(str){
+      var xhttp;
+      xhttp = new XMLHttpRequest();
+      // document.getElementById("test2").innerHTML = str;
+      // xhttp.onreadystatechange = function() {
+      // if (this.readyState == 4 && this.status == 200) {
+      //   document.getElementById("test2").innerHTML = this.responsiveText;
+      // }
+      // };
+      xhttp.open("GET", "../controller/remove_ques_test.php?q=" + str, true);
       xhttp.send(); 
     }
   </script>
